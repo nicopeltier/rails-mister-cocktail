@@ -1,10 +1,37 @@
 
-
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://unsplash.it/200/300');">
+  <div class="banner-content">
+    <h1>You deserve the finest ...</h1>
+    <p>Low alcoolhic and fresh fruits cocktails are here</p>
+  </div>
+</div>
 
 <br>
-<% @cocktails.each do |cocktail| %>
 
-<%= cocktail.id %> --- <%= cocktail.name %><%= link_to "More details", cocktail_path(cocktail.id) %>
+<% @cocktails.each do |cocktail| %>
+<div class="product">
+  <div class='product-upvote'>
+    <div class="product-arrow"></div>
+    <div class='product-count'>95</div>
+  </div>
+  <img src="https://unsplash.it/50/20" alt="kudoz" class="product-image hidden-xs">
+  <div class='product-body'>
+
+
+    <h3>Top cocktails ... </h3>
+    <p><%= cocktail.id %> --- <%= cocktail.name %>   -   <%= link_to "More details", cocktail_path(cocktail.id) %>
+
+    </p>
+
+
+  </div>
+  <ul class="list-inline product-controls hidden-sm hidden-xs">
+    <li><a href=""><i class="fa fa-heart"></i></a></li>
+    <li><a href=""><i class="fa fa-share"></i></a></li>
+    <li><a href=""><i class="fa fa-star"></i></a></li>
+  </ul>
+</div>
+
 <br>
 
 <% end %>
