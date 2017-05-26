@@ -1,27 +1,51 @@
+<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>');">
 
-show cocktail
-<br>
+  <div class="card-category" >Cocktail</div>
 
-<%= @cocktail.name %>
-<%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
-<br>
-<br>
-<%= link_to 'list', cocktails_path %><br>
+  <div class="card-description">
+    <h2><%= @cocktail.name %></h2>
 
-<%= link_to "Delete", cocktail_path(@cocktail),
+  </div>
+
+  <img class="card-user avatar" src="user.jpg">
+  <a class="card-link" href="#" ></a>
+
+</div>
+<br><br>
+    <p>
+
+
+
+    <%= link_to 'list', cocktails_path, :class => "btn-medium" %>
+    <%= link_to 'Delete', cocktail_path(@cocktail),
+      :class => "btn-medium",
       method: :delete,
-      data: { confirm: "Are you sure?" } %><br>
+      data: { confirm: "Are you sure?" } %>
+   <%= link_to 'Add dose', new_cocktail_dose_path(@cocktail, @dose), :class => "btn-medium" %>
 
-<%= link_to 'Add dose', new_cocktail_dose_path(@cocktail, @dose) %><br>
+</p>
+
+
+
+<br>
+
 <h1>Doses</h1>
 
 <% @doses.each do |dose| %>
-   <%= dose.description %> - <%= Ingredient.find(dose.ingredient_id).name %>
-    <%= link_to "Delete Dose", cocktail_dose_path(dose.id),
-      method: :delete,
-      data: { confirm: "Are you sure?" } %><br>
+<div class="product">
+
+  <div class='product-body'>
+    <h3><%= Ingredient.find(dose.ingredient_id).name %></h3>
+<p>
+    <%= dose.description %>
+    <%= link_to 'Delete Dose', cocktail_dose_path(dose.id), :class => "btn-medium", method: :delete,
+      data: { confirm: "Are you sure?" } %></p>
 
 
-   <br>
+  </div>
+
+</div>
+
+
 <% end %>
 
