@@ -3,14 +3,25 @@ show cocktail
 <br>
 
 <%= @cocktail.name %>
+<%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
 <br>
 <br>
 <%= link_to 'list', cocktails_path %><br>
+
+<%= link_to "Delete", cocktail_path(@cocktail),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %><br>
 
 <%= link_to 'Add dose', new_cocktail_dose_path(@cocktail, @dose) %><br>
 <h1>Doses</h1>
 
 <% @doses.each do |dose| %>
-   <%= dose.description %> - <%= Ingredient.find(dose.ingredient_id).name %><br>
+   <%= dose.description %> - <%= Ingredient.find(dose.ingredient_id).name %>
+    <%= link_to "Delete Dose", cocktail_dose_path(dose.id),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %><br>
+
+
+   <br>
 <% end %>
 
